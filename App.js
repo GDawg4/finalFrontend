@@ -1,11 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import Books from "./src/components/Books";
+
+import { configureStore } from './src/store';
+
+const { store, persistor } = configureStore();
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+            <Text>Esta pantalla</Text>
+          <Books/>
+        </View>
+      </Provider>
   );
 }
 
